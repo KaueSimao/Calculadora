@@ -7,32 +7,81 @@
     <title>Calculadora</title>
 
     <style>
+        .calculadora{
+            margin-top: 100px;
+            text-align: center;
+        }
+
         body {
             background-color:#4682B4	;
+            font-family:sans-serif;
+            
         }
+        h1 {
+            margin: 10;
+            padding: 20px 0;
+            color: #00539F;
+            text-shadow: 3px 3px 1px black;
+            color: azure;
+            font-size: 45px;
+            text-align: center;
+        }
+        button {padding:5px 10px;font-size:12px
+        }
+
+
+        .flex-container {
+    display: flex;
+  }
+
+  .flex-container{
+    justify-content: center;
+
+  }
+
     </style>
 </head>
 <body>
+
     <h1>Calculadora</h1>
+    <div class="calculadora">
     <form>
         <input id="num1" type="text"></input>
         <input id="num2" type="text"></input>
-        <button type="button" : onclick="somar()">Somar</button>
-        <input id="soma" type="text" disabled></input>
+        <button type="button" id="soma" onclick="opercacao('+')">Somar</button>
+        <button type="button" id="substracao" onclick="opercacao('-')">Substrair</button>
+        <button type="button" id="multiplicacao" onclick="opercacao('*')">Multiplicar</button>
+        <button type="button" id="divisao" onclick="opercacao('/')">Dividir</button>
+        <input  type="text" disabled id="resposta"></input>
     </form>
+</div>
 
     <script>
-        function somar(){
-            var num1, num2, soma;
-            num1 = parseFloat(document.getElementById("num1").value);
-            num2 = parseFloat(document.getElementById("num2").value);
+        function opercacao(op){        
+            var numero1 = parseFloat(document.getElementById("num1").value);
+            var numero2 = parseFloat(document.getElementById("num2").value);
+            var resposta = document.getElementById("resposta");
+            var resposta_final;
 
-            soma = num1 + num2;
+            switch (op) {
+                case "+":
+                    resposta_final = numero1 + numero2;
+                    break
 
-            document.getElementById ("soma").value = soma;
+                case "-":
+                    resposta_final = numero1 - numero2;
+                    break
+                case "*":
+                    resposta_final = numero1 * numero2;
+                    break
+                case "/":
+                    resposta_final = numero1 / numero2;
+                    break
+            }
+            resposta.value = resposta_final;
+
         }
+
     </script>
-
-
 </body>
 </html>
